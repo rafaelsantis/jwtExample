@@ -1,0 +1,11 @@
+c:\projetos\jwtExample\jwtApi\bin\Debug\netcoreapp2.0\jwtApi.deps.json
+c:\projetos\jwtExample\jwtApi\bin\Debug\netcoreapp2.0\jwtApi.runtimeconfig.json
+c:\projetos\jwtExample\jwtApi\bin\Debug\netcoreapp2.0\jwtApi.runtimeconfig.dev.json
+c:\projetos\jwtExample\jwtApi\bin\Debug\netcoreapp2.0\jwtApi.dll
+c:\projetos\jwtExample\jwtApi\bin\Debug\netcoreapp2.0\jwtApi.pdb
+c:\projetos\jwtExample\jwtApi\obj\Debug\netcoreapp2.0\jwtApi.csprojAssemblyReference.cache
+c:\projetos\jwtExample\jwtApi\obj\Debug\netcoreapp2.0\jwtApi.csproj.CoreCompileInputs.cache
+c:\projetos\jwtExample\jwtApi\obj\Debug\netcoreapp2.0\jwtApi.AssemblyInfoInputs.cache
+c:\projetos\jwtExample\jwtApi\obj\Debug\netcoreapp2.0\jwtApi.AssemblyInfo.cs
+c:\projetos\jwtExample\jwtApi\obj\Debug\netcoreapp2.0\jwtApi.dll
+c:\projetos\jwtExample\jwtApi\obj\Debug\netcoreapp2.0\jwtApi.pdb
