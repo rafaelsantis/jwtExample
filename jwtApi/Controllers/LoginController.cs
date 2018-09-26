@@ -7,6 +7,8 @@ using System.Security.Principal;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
+using jwtApi.Models;
+using MongoDB.Driver;
 
 namespace jwtApi.Controllers
 {
@@ -26,7 +28,7 @@ namespace jwtApi.Controllers
             {
                 if (credenciais.GrantType == "password")
                 {
-                    credenciaisValidas = true;
+                    credenciaisValidas = (new MongoDbContext()).Usuarios.Find(q => q.Email == credenciais.UserID && q.Password == credenciais.AccessKey) != null;
                 } 
                 else if (credenciais.GrantType == "refresh_token")
                 {

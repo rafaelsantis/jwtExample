@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using jwtApi.Models;
 
 namespace jwtApi
 {
@@ -25,6 +26,10 @@ namespace jwtApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            MongoDbContext.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
+            MongoDbContext.DatabaseName = Configuration.GetSection("MongoConnection:Database").Value;
+            MongoDbContext.IsSSL = Convert.ToBoolean(this.Configuration.GetSection("MongoConnection:IsSSL").Value);
+
             // Ativando o uso de cache via Redis
             services.AddDistributedRedisCache(options =>
             {
