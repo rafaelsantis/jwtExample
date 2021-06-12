@@ -1,29 +1,19 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import fs from 'fs';
-
-var users = { // Mocked database
-  "admin": {
-    encryptedPwd: "$2b$04$QND6/T.1ETNkBWjNofdqvuk5dYf91E92gkMSRsh/.SyRUHA6EJB/.",
-    role: "admin"
-  }
-};
+import userRepository from '../repositories/user.repository.js';
 
 async function getUsers() {
-  return users;
+  return await userRepository.getUsers();
 }
 
 async function createUser(user) {
-  const encryptedPwd = bcrypt.hashSync(user.password, 1);
-  users[user.username] = {
-    encryptedPwd: encryptedPwd,
-    role: user.role
-  };
+  await userRepository.createUser(user);
   return user;
 }
 
 async function login(user) {
-  const databaseUser = users[user.username];
+  const databaseUser = await userRepository.getUserByUsername(user.username);
   if(databaseUser) {
     const pwdMatches = bcrypt.compareSync(user.password, databaseUser.encryptedPwd);
     if(pwdMatches){

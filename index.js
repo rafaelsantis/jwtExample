@@ -7,11 +7,22 @@ import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import { swaggerDocument } from "./doc.js"
 import jwt from 'jsonwebtoken'
+import database from './db.js';
 
 //generatekey
 //http://travistidwell.com/jsencrypt/demo/
 
 const { readFile, writeFile } = fs;
+
+(async () => {
+
+  try {
+      const resultado = await database.sync();
+      console.log(resultado);
+  } catch (error) {
+      console.log(error);
+  }
+})();
 
 global.fileName = "accounts.json";
 
