@@ -1,12 +1,24 @@
 <html>
-    <script>
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                console.log(this);
-            }
-        };
-        xhttp.open("GET", "http://localhost:3000/account");
-        xhttp.send();
-    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+  /*localStorage.setItem('user_token', 
+    'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjM3OTU5MzAsImV4cCI6MTYyMzc5NjIzMH0.KoLWgtjXm3vMXUSR5zVD2y014swS_m0rKtO1rFzDb2fU7Li_Iin0-jmWMJ84f1_8c8GNEXOeFlv5Y3cHZfNhbyW1bIXDXqQ3IYiqzjePSLKNs5iNAm_GcXMkJgfepRx83d9DtSXg1xt05NgsTIsBGCj9lz7y1mAxE1X2ADe55YE');
+*/
+  $.ajax({
+     url: 'http://localhost:3000/account',
+     type: 'GET',
+     contentType: 'application/json',
+     headers: {
+        'Authorization': `Bearer ${localStorage.getItem('user_token')}`
+      },
+     success: function (result) {
+         console.log(result);
+     },
+     error: function (error) {
+    console.log(error.responseText);
+     }
+  });
+  </script>
 </html>

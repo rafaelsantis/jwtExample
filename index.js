@@ -45,7 +45,13 @@ global.logger = winston.createLogger({
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use((req, res, next) => {
+  //console.log("Acessou o Middleware!");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+  app.use(cors());
+  next();
+});
 app.use(express.static("public"));
 
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
