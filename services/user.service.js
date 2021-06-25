@@ -12,6 +12,10 @@ async function createUser(user) {
   return user;
 }
 
+async function deleteUser(username) {
+  await userRepository.deleteUser(username);
+}
+
 async function login(user) {
   const databaseUser = await userRepository.getUserByUsername(user.username);
   if(databaseUser) {
@@ -34,4 +38,4 @@ async function login(user) {
   }
 }
 
-export default { getUsers, createUser, login };
+export default { getUsers, createUser, login, deleteUser };

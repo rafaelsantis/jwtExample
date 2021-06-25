@@ -17,6 +17,18 @@ async function getUserByUsername(username) {
     return null;
 }
 
+async function deleteUser(username) {
+  try {
+    await User.destroy({
+      where: {
+        name: username
+      }
+    });
+  } catch(error) {
+    throw error;
+  }
+}
+
 async function createUser ({ username, password, role }) {
   try {
       const resultadoCreate = await User.create({
@@ -26,8 +38,8 @@ async function createUser ({ username, password, role }) {
       })
       console.log(resultadoCreate);
   } catch (error) {
-      console.log(error);
+      throw error;
   }
 };
 
-export default { getUsers, createUser, getUserByUsername }
+export default { getUsers, createUser, getUserByUsername, deleteUser }

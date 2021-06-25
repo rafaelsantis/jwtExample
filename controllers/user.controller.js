@@ -23,6 +23,21 @@ async function createUser(req, res, next) {
   }
 }
 
+async function deleteUser(req, res, next) {
+  try {
+    let user = req.params;
+    if(!user.username) {
+      throw new Error('Username é obrigatório');
+    }
+    await UserService.deleteUser(user.username);
+    res.status(201).json({ message: `User ${user.username} removed.`});
+    logger.info(`DELETE /deleteUser - ${JSON.stringify(user)}`);
+  } catch(err) {
+    next(err);
+  }
+}
+
+
 async function login(req, res, next) {
   try {
     let user = req.body;
@@ -36,4 +51,4 @@ async function login(req, res, next) {
   }
 }
 
-export default { getUsers, createUser, login };
+export default { getUsers, createUser, login, deleteUser };

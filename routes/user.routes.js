@@ -1,15 +1,12 @@
 import express from 'express';
 import UserController from '../controllers/user.controller.js';
+import authorize from "../security/authorize.security.js";
 
 const router = express.Router();
 
-router.get('/', UserController.getUsers);
-router.post('/createuser', UserController.createUser);
+router.get('/', authorize('admin'), UserController.getUsers);
+router.post('/', UserController.createUser);
 router.post('/login', UserController.login);
-
-router.use((err, req, res, next) => {
-  logger.error(`${req.method} ${req.baseUrl} - ${err.message}`);
-  res.status(400).send({ error: err.message });
-});
+router.delete('/:username', UserController.deleteUser);
 
 export default router;
